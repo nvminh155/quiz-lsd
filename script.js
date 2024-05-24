@@ -33,8 +33,12 @@ function createChoices(no, choices) {
 function createQuestion(no, ques) {
   const div = document.createElement("div");
   div.classList.add("question");
-  div.id = `#question${no}`;
+  div.id = `question${no}`;
   
+  const a = document.createElement('a');
+  a.name = `question${no}`;
+
+  div.appendChild(a);
   const choices = document.createElement("div");
   choices.classList.add("choices");
   choices.append(...createChoices(no, ques.choices).map(it => {

@@ -25,7 +25,11 @@
 </style>
 <body>
     <button  id="randomQuiz">Bắt đầu với câu hỏi ngẫu nhiên</button>
-
+    <div style="position: fixed; bottom: 10px; right: 10px; display: flex; flex-direction: column; max-width: 100px; gap: 10px 0;">
+        <input type="number" id="quizNumber" placeholder="Nhập câu hỏi muốn đến">
+        <input type="button" value="Đi đến" id="startQuiz" onclick="gotoQues(this)">
+        <a href="#" id="goto"></a>
+    </div>
     <div>
         <p style="font-weight: bold;"><span>Tải lại trang để các câu hỏi trở về đúng thứ tự</span>
         </p>
@@ -34,15 +38,32 @@
             <span>Nếu có câu hỏi nào không phải là đáp án đúng vui lòng gửi minh chứng + đáp án đúng về <br><span style="font-weight: 600;">Bình luận của bài viết ^_^</span></span>
         </p>
     </div>
-    <div id="#triet">
-        
-    </div>
 
-    <div id="noteLSD" style="position: fixed; bottom: 10px; right: 10px; display: flex; flex-direction: column; gap: 10px 0;">
+    <div id="noteLSD" style="display: flex; flex-direction: column; gap: 10px 0;">
         <div>Chương 1 : Đầu - 148</div>
         <div>Chương 2: 149 - 312</div>
         <div>Chương 3 : 313 - Hết</div>
     </div>
+
+    <div id="#triet">
+        
+    </div>
+
+    
     <script src="./script.js" ></script>
+    <script>
+
+        document.getElementById('quizNumber').addEventListener('keyup', function(e) {
+            if (e.keyCode === 13) {
+                gotoQues();
+            }
+        })
+        function gotoQues(e) {
+            const num = document.getElementById('quizNumber').value;
+            const goto = document.getElementById('goto');
+            goto.href = `#question${num}`
+            goto.click();
+        }
+    </script>
 </body>
 </html>
